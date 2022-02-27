@@ -24,9 +24,6 @@ public class Problem {
     @Field
     private int score;
 
-    public Problem() {
-    }
-
     public Problem(Long id, String name, String description, String inputDescription, String outputDescription, int score) {
         this.id = id;
         this.name = name;
