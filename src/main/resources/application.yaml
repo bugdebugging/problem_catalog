@@ -10,3 +10,5 @@ spring:
     mongodb:
       host: localhost
       port: 27017
+  jackson:
+    property-naming-strategy: SNAKE_CASE
