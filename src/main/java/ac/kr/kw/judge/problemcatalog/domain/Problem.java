@@ -33,14 +33,6 @@ public class Problem {
         this.score = score;
     }
 
-    public void changeInfo(String name, String description, String inputDescription, String outputDescription, int score){
-        this.name=name;
-        this.description=description;
-        this.inputDescription=inputDescription;
-        this.outputDescription=outputDescription;
-        this.score=score;
-    }
-
     public Long getId() {
         return id;
     }
