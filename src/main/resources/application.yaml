@@ -12,3 +12,14 @@ spring:
       port: 27017
   jackson:
     property-naming-strategy: SNAKE_CASE
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: problem-catalog-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      bootstrap-servers: localhost:9092
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
