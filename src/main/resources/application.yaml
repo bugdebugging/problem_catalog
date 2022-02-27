@@ -1,0 +1,12 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+    encoding:
+      force: true
+
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
