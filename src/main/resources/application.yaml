@@ -8,13 +8,13 @@ server:
 spring:
   data:
     mongodb:
-      host: localhost
+      host: ${MONGO_DB_HOST}
       port: 27017
   jackson:
     property-naming-strategy: SNAKE_CASE
   kafka:
     consumer:
-      bootstrap-servers: localhost:9092
+      bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS}
       group-id: problem-catalog-group
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
