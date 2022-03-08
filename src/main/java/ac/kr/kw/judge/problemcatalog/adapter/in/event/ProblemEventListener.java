@@ -20,7 +20,7 @@ public class ProblemEventListener {
             ProblemChanged problemChanged = objectMapper.readValue(message, ProblemChanged.class);
             problemChangeService.changeProblemInfo(problemChanged);
         } catch (JsonProcessingException e) {
-            throw new IllegalArgumentException("ProblemChanged의 형태가 아닙니다:" + e.getMessage());
+            e.printStackTrace();
         }
     }
 }
