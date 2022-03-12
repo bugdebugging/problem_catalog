@@ -26,7 +26,7 @@ public class ProblemRetrieveController {
         return ApiUtils.success(problemRetrieveService.findProblemContainingIds(problemIds));
     }
 
-    @GetMapping("/api/problem_ctalogs")
+    @GetMapping("/api/problem_catalogs")
     public ApiResult retrieveProblems(@RequestParam(value = "page", required = false, defaultValue = "0") int page,
                                       @RequestParam(value = "size", required = false, defaultValue = "10") int size) {
         return ApiUtils.success(problemRetrieveService.findProblems(page, size));
