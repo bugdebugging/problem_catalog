@@ -2,9 +2,11 @@ package ac.kr.kw.judge.problemcatalog.service;
 
 import ac.kr.kw.judge.problemcatalog.domain.Problem;
 import ac.kr.kw.judge.problemcatalog.dto.out.ProblemDto;
+import ac.kr.kw.judge.problemcatalog.dto.out.ProblemSummaryItem;
 import ac.kr.kw.judge.problemcatalog.repository.ProblemRepository;
 import ac.kr.kw.judge.problemcatalog.service.port.in.ProblemRetrieveService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,6 +30,13 @@ public class ProblemRetrieveServiceImpl implements ProblemRetrieveService {
     public List<ProblemDto> findProblemContainingIds(List<Long> problemIds) {
         return problemRepository.findProblemsByIdIn(problemIds)
                 .stream().map(problem -> ProblemDto.fromEntity(problem))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ProblemSummaryItem> findProblems(int page, int size) {
+        return problemRepository.findAll(PageRequest.of(page, size))
+                .stream().map(problem -> ProblemSummaryItem.of(problem.getId(), problem.getName(), problem.getScore()))
                 .collect(Collectors.toList());
     }
 }

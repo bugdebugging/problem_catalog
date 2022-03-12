@@ -25,4 +25,10 @@ public class ProblemRetrieveController {
     public ApiResult retrieveProblemContainingIds(@RequestParam List<Long> problemIds) {
         return ApiUtils.success(problemRetrieveService.findProblemContainingIds(problemIds));
     }
+
+    @GetMapping("/api/problem_ctalogs")
+    public ApiResult retrieveProblems(@RequestParam(value = "page", required = false, defaultValue = "0") int page,
+                                      @RequestParam(value = "size", required = false, defaultValue = "10") int size) {
+        return ApiUtils.success(problemRetrieveService.findProblems(page, size));
+    }
 }
