@@ -2,6 +2,7 @@ package ac.kr.kw.judge.problemcatalog.adapter.in.web;
 
 import ac.kr.kw.judge.commons.api.ApiResult;
 import ac.kr.kw.judge.commons.api.ApiUtils;
+import ac.kr.kw.judge.commons.auth.AuthorizedUser;
 import ac.kr.kw.judge.problemcatalog.service.port.in.ProblemRetrieveService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,8 +18,8 @@ public class ProblemRetrieveController {
     private final ProblemRetrieveService problemRetrieveService;
 
     @GetMapping("/api/problem_catalogs/{problemId}")
-    public ApiResult retrieveProblemDetail(@PathVariable("problemId") Long problemId) {
-        return ApiUtils.success(problemRetrieveService.findProblemDetail(problemId));
+    public ApiResult retrieveProblemDetail(@PathVariable("problemId") Long problemId, @AuthorizedUser String username) {
+        return ApiUtils.success(problemRetrieveService.findProblemDetail(problemId, username));
     }
 
     @GetMapping("/api/problem_catalogs/containing")
