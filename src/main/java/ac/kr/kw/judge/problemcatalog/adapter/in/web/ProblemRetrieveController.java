@@ -17,6 +17,11 @@ import java.util.List;
 public class ProblemRetrieveController {
     private final ProblemRetrieveService problemRetrieveService;
 
+    @GetMapping("/api/authors/problem_catalogs/")
+    public ApiResult retrieveAuthorsProblem(@AuthorizedUser String username) {
+        return ApiUtils.success(problemRetrieveService.findProblemBelongToAuthor(username));
+    }
+
     @GetMapping("/api/problem_catalogs/{problemId}")
     public ApiResult retrieveProblemDetail(@PathVariable("problemId") Long problemId, @AuthorizedUser String username) {
         return ApiUtils.success(problemRetrieveService.findProblemDetail(problemId, username));

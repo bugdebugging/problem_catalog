@@ -11,4 +11,6 @@ public interface ProblemRetrieveService {
     List<ProblemSummaryItem> findProblemContainingIds(List<Long> problemIds);
 
     List<ProblemSummaryItem> findProblems(int page, int size);
+
+    List<ProblemSummaryItem> findProblemBelongToAuthor(String author);
 }

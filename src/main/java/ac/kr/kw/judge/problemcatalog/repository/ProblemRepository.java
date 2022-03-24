@@ -5,6 +5,8 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;
 
-public interface ProblemRepository extends MongoRepository<Problem,Long> {
-    List<Problem>findProblemsByIdIn(List<Long>problemIds);
+public interface ProblemRepository extends MongoRepository<Problem, Long> {
+    List<Problem> findProblemsByIdIn(List<Long> problemIds);
+
+    List<Problem> findProblemsByAuthor(String author);
 }

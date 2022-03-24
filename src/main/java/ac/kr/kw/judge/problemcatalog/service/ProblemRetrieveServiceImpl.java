@@ -45,4 +45,11 @@ public class ProblemRetrieveServiceImpl implements ProblemRetrieveService {
                 .stream().map(problem -> ProblemSummaryItem.fromEntity(problem))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<ProblemSummaryItem> findProblemBelongToAuthor(String author) {
+        return problemRepository.findProblemsByAuthor(author)
+                .stream().map(problem -> ProblemSummaryItem.fromEntity(problem))
+                .collect(Collectors.toList());
+    }
 }
