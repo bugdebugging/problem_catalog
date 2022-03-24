@@ -59,6 +59,10 @@ public class Problem {
         this.openTime = timeStamp;
     }
 
+    public boolean canSearchDetailToAnonymous(LocalDateTime timestamp){
+        return this.status==ProblemStatus.ENABLE && this.openTime.isBefore(timestamp);
+    }
+
     public Long getId() {
         return id;
     }
