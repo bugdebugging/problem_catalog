@@ -33,16 +33,16 @@ public class ProblemRetrieveServiceImpl implements ProblemRetrieveService {
     }
 
     @Override
-    public List<ProblemDto> findProblemContainingIds(List<Long> problemIds) {
+    public List<ProblemSummaryItem> findProblemContainingIds(List<Long> problemIds) {
         return problemRepository.findProblemsByIdIn(problemIds)
-                .stream().map(problem -> ProblemDto.fromEntity(problem))
+                .stream().map(problem -> ProblemSummaryItem.fromEntity(problem))
                 .collect(Collectors.toList());
     }
 
     @Override
     public List<ProblemSummaryItem> findProblems(int page, int size) {
         return problemRepository.findAll(PageRequest.of(page, size))
-                .stream().map(problem -> ProblemSummaryItem.of(problem.getId(), problem.getName(), problem.getScore()))
+                .stream().map(problem -> ProblemSummaryItem.fromEntity(problem))
                 .collect(Collectors.toList());
     }
 }

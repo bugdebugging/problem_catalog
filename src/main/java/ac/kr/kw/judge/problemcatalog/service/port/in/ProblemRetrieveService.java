@@ -6,9 +6,9 @@ import ac.kr.kw.judge.problemcatalog.dto.out.ProblemSummaryItem;
 import java.util.List;
 
 public interface ProblemRetrieveService {
-    ProblemDto findProblemDetail(Long problemId);
+    ProblemDto findProblemDetail(Long problemId, String username);
 
-    List<ProblemDto> findProblemContainingIds(List<Long> problemIds);
+    List<ProblemSummaryItem> findProblemContainingIds(List<Long> problemIds);
 
     List<ProblemSummaryItem> findProblems(int page, int size);
 }
