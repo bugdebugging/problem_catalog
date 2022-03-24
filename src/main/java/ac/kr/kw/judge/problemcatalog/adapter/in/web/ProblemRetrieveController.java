@@ -17,7 +17,7 @@ import java.util.List;
 public class ProblemRetrieveController {
     private final ProblemRetrieveService problemRetrieveService;
 
-    @GetMapping("/api/authors/problem_catalogs/")
+    @GetMapping("/api/problem_catalogs/authors")
     public ApiResult retrieveAuthorsProblem(@AuthorizedUser String username) {
         return ApiUtils.success(problemRetrieveService.findProblemBelongToAuthor(username));
     }
