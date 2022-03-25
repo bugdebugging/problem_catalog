@@ -1,18 +1,19 @@
 package ac.kr.kw.judge.problemcatalog.domain.event;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class ProblemOpenTimeChanged {
-    private Long id;
+    private List<Long> ids;
     private LocalDateTime openTime;
 
-    public ProblemOpenTimeChanged(Long id, LocalDateTime openTime) {
-        this.id = id;
+    public ProblemOpenTimeChanged(List<Long> ids, LocalDateTime openTime) {
+        this.ids = ids;
         this.openTime = openTime;
     }
 
-    public Long getId() {
-        return id;
+    public List<Long> getIds() {
+        return ids;
     }
 
     public LocalDateTime getOpenTime() {

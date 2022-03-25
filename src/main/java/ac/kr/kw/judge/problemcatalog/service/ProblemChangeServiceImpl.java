@@ -41,8 +41,8 @@ public class ProblemChangeServiceImpl implements ProblemChangeService {
 
     @Override
     public void assignOpenTimeOn(ProblemOpenTimeChanged problemOpenTimeChanged) {
-        Problem problem = findProblem(problemOpenTimeChanged.getId());
-        problem.openToPublicOn(problemOpenTimeChanged.getOpenTime());
+        problemRepository.findProblemsByIdIn(problemOpenTimeChanged.getIds())
+                .stream().forEach(problem -> problem.openToPublicOn(problemOpenTimeChanged.getOpenTime()));
     }
 
     private Problem findProblem(Long id) {
