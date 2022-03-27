@@ -10,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -41,8 +43,10 @@ public class ProblemChangeServiceImpl implements ProblemChangeService {
 
     @Override
     public void assignOpenTimeOn(ProblemOpenTimeChanged problemOpenTimeChanged) {
-        problemRepository.findProblemsByIdIn(problemOpenTimeChanged.getIds())
-                .stream().forEach(problem -> problem.openToPublicOn(problemOpenTimeChanged.getOpenTime()));
+        List<Problem> problems = problemRepository.findProblemsByIdIn(problemOpenTimeChanged.getIds());
+        problems.stream().forEach(problem->problem.openToPublicOn(problemOpenTimeChanged.getOpenTime()));
+
+        problemRepository.saveAll(problems);
     }
 
     private Problem findProblem(Long id) {
