@@ -13,7 +13,10 @@ configurations {
         extendsFrom annotationProcessor
     }
 }
-
+test{
+    environment "MONGO_DB_HOST","localhost:27017"
+    environment "KAFKA_BOOTSTRAP_SERVERS","localhost:9092"
+}
 repositories {
     mavenCentral()
 }
