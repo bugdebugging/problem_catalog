@@ -28,8 +28,8 @@ public class ProblemRetrieveController {
     }
 
     @GetMapping("/api/problem_catalogs/containing")
-    public ApiResult retrieveProblemContainingIds(@RequestParam List<Long> problemIds) {
-        return ApiUtils.success(problemRetrieveService.findProblemContainingIds(problemIds));
+    public ApiResult retrieveProblemContainingIds(@RequestParam List<Long> problemIds, @AuthorizedUser String username) {
+        return ApiUtils.success(problemRetrieveService.findProblemContainingIds(problemIds, username));
     }
 
     @GetMapping("/api/problem_catalogs")

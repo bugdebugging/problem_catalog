@@ -8,7 +8,7 @@ import java.util.List;
 public interface ProblemRetrieveService {
     ProblemDto findProblemDetail(Long problemId, String username);
 
-    List<ProblemSummaryItem> findProblemContainingIds(List<Long> problemIds);
+    List<ProblemSummaryItem> findProblemContainingIds(List<Long> problemIds, String username);
 
     List<ProblemSummaryItem> findProblems(int page, int size);
 

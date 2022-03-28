@@ -33,10 +33,19 @@ public class ProblemRetrieveServiceImpl implements ProblemRetrieveService {
     }
 
     @Override
-    public List<ProblemSummaryItem> findProblemContainingIds(List<Long> problemIds) {
-        return problemRepository.findProblemsByIdIn(problemIds)
-                .stream().map(problem -> ProblemSummaryItem.fromEntity(problem))
+    public List<ProblemSummaryItem> findProblemContainingIds(List<Long> problemIds, String username) {
+        List<Problem> problems = problemRepository.findProblemsByIdIn(problemIds);
+        verifyProblemsCreateBy(problems, username);
+
+        return problems.stream().map(problem -> ProblemSummaryItem.fromEntity(problem))
                 .collect(Collectors.toList());
+    }
+
+    private void verifyProblemsCreateBy(List<Problem> problems, String aUsername) {
+        if (problems.stream().filter(problem -> problem.getAuthor().equals(aUsername))
+                .collect(Collectors.toList()).size() != problems.size()) {
+            throw new UnAuthorizedException("본인의 문제만 대회에서 선택할 수 있습니다.");
+        }
     }
 
     @Override
